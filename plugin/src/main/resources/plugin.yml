@@ -1,0 +1,9 @@
+main: team.emptyte.mercuryoptions.plugin.MercuryPlugin
+version: @version@
+author: EmptyteTeam
+api-version: 1.13
+name: mercurysettings
+
+commands:
+  mercurysettings:
+    description: test

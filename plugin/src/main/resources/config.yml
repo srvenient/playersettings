@@ -1,0 +1,72 @@
+config:
+  menu:
+    item-state: true
+
+menu:
+  title: "Configuracion dentro del Lobby"
+  rows: 4
+
+  items:
+    visibility:
+      material: "CLOCK"
+      displayName: "&bVisibilidad"
+      amount: 1
+      lore:
+        - ""
+        - "&rModifica a quienes quieres ver"
+        - "&rcuando te encuetres en el lobby"
+        - ""
+        - "%setting_state%"
+        - ""
+        - "&e¡Click para alternar!"
+      slot: 11
+    chat:
+      material: "LEGACY_EMPTY_MAP"
+      displayName: "&bChat"
+      amount: 1
+      lore:
+        - ""
+        - "&rModifica de que jugadores, te interesa"
+        - "&rver sus mensajes en el chat."
+        - ""
+        - "%setting_state%"
+        - ""
+        - "&e¡Click para alternar!"
+      slot: 12
+    double-jump:
+      material: "COOKED_MUTTON"
+      displayName: "&bDoble Salto"
+      amount: 1
+      lore:
+        - ""
+        - "&rSalta dos veces."
+        - ""
+        - "%setting_state%"
+        - ""
+        - "&e¡Click para alternar!"
+      slot: 13
+    mount:
+      material: "SADDLE"
+      displayName: "&bMontura"
+      amount: 1
+      lore:
+        - ""
+        - "&r¿Quieres permitir que los demas"
+        - "&rjugadores se monten encima tuyo?"
+        - ""
+        - "%setting_state%"
+        - ""
+        - "&e¡Click para alternar!"
+      slot: 14
+    fly:
+      material: "FEATHER"
+      displayName: "&bVuelo"
+      amount: 1
+      lore:
+        - ""
+        - "&rVuela por los lobbyes."
+        - ""
+        - "%setting_state%"
+        - ""
+        - "&e¡Click para alternar!"
+      slot: 15
