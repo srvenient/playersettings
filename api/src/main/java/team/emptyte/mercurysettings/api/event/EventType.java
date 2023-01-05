@@ -21,8 +21,6 @@ public enum EventType {
                 }
             });
 
-            user.getPlayer().sendMessage("hola");
-
             return;
         }
 
@@ -30,7 +28,6 @@ public enum EventType {
             user.changeState(id, (byte) 2);
 
             Bukkit.getOnlinePlayers().forEach(players -> player.hidePlayer(plugin, players));
-            user.getPlayer().sendMessage("hola2");
 
             return;
         }
@@ -39,7 +36,6 @@ public enum EventType {
             user.changeState(id, (byte) 0);
 
             Bukkit.getOnlinePlayers().forEach(players -> player.showPlayer(plugin, players));
-            user.getPlayer().sendMessage("hola3");
         }
     }),
     CHAT((plugin, user) -> {
@@ -48,37 +44,40 @@ public enum EventType {
 
         if (setting.getState() == (byte) 0) {
             user.changeState(id, (byte) 1);
-            user.getPlayer().sendMessage("hola");
 
             return;
         }
 
         if (setting.getState() == (byte) 1) {
             user.changeState(id, (byte) 2);
-            user.getPlayer().sendMessage("hola2");
 
             return;
         }
 
         if (setting.getState() == (byte) 2) {
             user.changeState(id, (byte) 0);
-            user.getPlayer().sendMessage("hola3");
         }
     }),
     DOUBLE_JUMP((plugin, user) -> {
+        Player player = user.getPlayer();
         String id = "double-jump";
         Setting setting = user.getSetting(id);
 
+        if (user.getSetting("fly").getState() == 0) {
+            player.sendMessage("No puedes interactuar con esta opciones si tienes activado la opciones de double jump.");
+            player.closeInventory();
+
+            return;
+        }
+
         if (setting.getState() == (byte) 0) {
             user.changeState(id, (byte) 1);
-            user.getPlayer().sendMessage("hola");
 
             return;
         }
 
         if (setting.getState() == (byte) 1) {
             user.changeState(id, (byte) 0);
-            user.getPlayer().sendMessage("hola2");
         }
     }),
     MOUNT((plugin, user) -> {
@@ -88,21 +87,24 @@ public enum EventType {
         if (setting.getState() == (byte) 0) {
             user.changeState(id, (byte) 1);
 
-            user.getPlayer().sendMessage("hola");
-
             return;
         }
 
         if (setting.getState() == (byte) 1) {
             user.changeState(id, (byte) 0);
-
-            user.getPlayer().sendMessage("hola2");
         }
     }),
     FLY((plugin, user) -> {
         Player player = user.getPlayer();
         String id = "fly";
         Setting setting = user.getSetting(id);
+
+        if (user.getSetting("double-jump").getState() == 0) {
+            player.sendMessage("No puedes interactuar con esta opciones si tienes activado la opciones de double jump.");
+            player.closeInventory();
+
+            return;
+        }
 
         if (setting.getState() == 0) {
             user.changeState(id, (byte) 1);
