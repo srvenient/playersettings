@@ -1,7 +1,7 @@
-package team.emptyte.mercuryoptions.api.data;
+package team.emptyte.mercurysettings.api.data;
 
 import org.bukkit.inventory.ItemStack;
-import team.emptyte.mercuryoptions.api.registry.Keyed;
+import team.emptyte.mercurysettings.api.registry.Keyed;
 
 public class SettingData implements Keyed {
 

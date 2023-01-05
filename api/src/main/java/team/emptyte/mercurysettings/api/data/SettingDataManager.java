@@ -1,4 +1,4 @@
-package team.emptyte.mercuryoptions.api.data;
+package team.emptyte.mercurysettings.api.data;
 
 import org.bukkit.inventory.ItemStack;
 

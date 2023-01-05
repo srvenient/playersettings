@@ -1,4 +1,4 @@
-package team.emptyte.mercuryoptions.api.utils;
+package team.emptyte.mercurysettings.api.utils;
 
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;

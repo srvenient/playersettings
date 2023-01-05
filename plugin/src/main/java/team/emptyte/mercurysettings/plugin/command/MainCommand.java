@@ -1,11 +1,11 @@
-package team.emptyte.mercuryoptions.plugin.command;
+package team.emptyte.mercurysettings.plugin.command;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
-import team.emptyte.mercuryoptions.api.SettingHandler;
+import team.emptyte.mercurysettings.api.SettingHandler;
 
 public class MainCommand implements CommandExecutor {
 

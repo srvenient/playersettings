@@ -1,4 +1,4 @@
-package team.emptyte.mercuryoptions.plugin.data;
+package team.emptyte.mercurysettings.plugin.data;
 
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
@@ -7,24 +7,17 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
-import team.emptyte.mercuryoptions.api.data.SettingData;
-import team.emptyte.mercuryoptions.api.data.SettingDataManager;
-import team.emptyte.mercuryoptions.api.registry.KeyedRegistry;
-import team.emptyte.mercuryoptions.api.utils.Utils;
-import team.unnamed.gui.item.ItemBuilder;
-import team.unnamed.gui.item.SkullItemBuilder;
-import team.unnamed.gui.item.skull.SkinManager;
-import team.unnamed.gui.item.skull.SkinProvider;
-import team.unnamed.gui.item.skull.SkullSkin;
+import team.emptyte.mercurysettings.api.data.SettingData;
+import team.emptyte.mercurysettings.api.data.SettingDataManager;
+import team.emptyte.mercurysettings.api.registry.KeyedRegistry;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
-import java.util.concurrent.Executors;
 
-import static team.emptyte.mercuryoptions.api.utils.Utils.colorize;
+import static team.emptyte.mercurysettings.api.utils.Utils.colorize;
 
 public class DefaultSettingDataManager implements SettingDataManager {
 
@@ -63,7 +56,6 @@ public class DefaultSettingDataManager implements SettingDataManager {
 
     @Override
     public void unregister() {
-        settings.
     }
 
     @Override

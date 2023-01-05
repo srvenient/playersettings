@@ -13,8 +13,8 @@ menu:
       amount: 1
       lore:
         - ""
-        - "&rModifica a quienes quieres ver"
-        - "&rcuando te encuetres en el lobby"
+        - "&fModifica a quienes quieres ver"
+        - "&fcuando te encuetres en el lobby"
         - ""
         - "%setting_state%"
         - ""
@@ -26,8 +26,8 @@ menu:
       amount: 1
       lore:
         - ""
-        - "&rModifica de que jugadores, te interesa"
-        - "&rver sus mensajes en el chat."
+        - "&fModifica de que jugadores, te interesa"
+        - "&fver sus mensajes en el chat."
         - ""
         - "%setting_state%"
         - ""
@@ -39,7 +39,7 @@ menu:
       amount: 1
       lore:
         - ""
-        - "&rSalta dos veces."
+        - "&fSalta dos veces."
         - ""
         - "%setting_state%"
         - ""
@@ -51,8 +51,8 @@ menu:
       amount: 1
       lore:
         - ""
-        - "&r¿Quieres permitir que los demas"
-        - "&rjugadores se monten encima tuyo?"
+        - "&f¿Quieres permitir que los demas"
+        - "&fjugadores se monten encima tuyo?"
         - ""
         - "%setting_state%"
         - ""
@@ -64,7 +64,7 @@ menu:
       amount: 1
       lore:
         - ""
-        - "&rVuela por los lobbyes."
+        - "&fVuela por los lobbyes."
         - ""
         - "%setting_state%"
         - ""

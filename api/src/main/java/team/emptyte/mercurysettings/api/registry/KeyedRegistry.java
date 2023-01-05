@@ -1,4 +1,4 @@
-package team.emptyte.mercuryoptions.api.registry;
+package team.emptyte.mercurysettings.api.registry;
 
 import java.util.Collection;
 import java.util.HashMap;

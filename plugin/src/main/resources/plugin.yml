@@ -1,4 +1,4 @@
-main: team.emptyte.mercuryoptions.plugin.MercuryPlugin
+main: team.emptyte.mercurysettings.plugin.MercurySettings
 version: @version@
 author: EmptyteTeam
 api-version: 1.13

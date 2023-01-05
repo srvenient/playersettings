@@ -1,4 +1,4 @@
-package team.emptyte.mercuryoptions.api;
+package team.emptyte.mercurysettings.api;
 
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
