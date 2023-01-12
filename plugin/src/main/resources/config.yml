@@ -1,20 +1,40 @@
 config:
   menu:
-    item-state: true
+    item-state-enabled: true
+    item-state-click-change: false
+
+    click-settings: "UI_BUTTON_CLICK"
+    click-item-close: "UI_BUTTON_CLICK"
+
+    permissions:
+      visibility: "playersettings.visibility"
+      chat: "playersettings.chat"
+      double-jump: "playersettings.double-jump"
+      mount: "playersettings.mount"
+      fly: "playersettings.fly"
+
+messages:
+  no-permission: "&cYou don't have enough permissions."
+  only-players: "&cOnly players."
+  help:
+    - "hi"
+    - "hi"
+
+  chat-deactivated: "&cYou have chat disabled."
 
 menu:
-  title: "Configuracion dentro del Lobby"
-  rows: 4
+  title: "Configuration the Lobby"
+  rows: 5
 
-  items:
+  settings:
     visibility:
+      amount: 1
       material: "CLOCK"
       displayName: "&bVisibilidad"
-      amount: 1
       lore:
         - ""
-        - "&fModifica a quienes quieres ver"
-        - "&fcuando te encuetres en el lobby"
+        - "&fModify who you want to see"
+        - "&fwhen you meet in the lobby"
         - ""
         - "%setting_state%"
         - ""
@@ -22,12 +42,12 @@ menu:
       slot: 11
     chat:
       material: "LEGACY_EMPTY_MAP"
-      displayName: "&bChat"
       amount: 1
+      displayName: "&bChat"
       lore:
         - ""
-        - "&fModifica de que jugadores, te interesa"
-        - "&fver sus mensajes en el chat."
+        - "&fModify which players, you are interested in"
+        - "&fsee your messages in the chat."
         - ""
         - "%setting_state%"
         - ""
@@ -35,38 +55,64 @@ menu:
       slot: 12
     double-jump:
       material: "COOKED_MUTTON"
-      displayName: "&bDoble Salto"
       amount: 1
+      displayName: "&bDoble Salto"
       lore:
         - ""
-        - "&fSalta dos veces."
+        - "&fJump twice."
         - ""
-        - "%setting_state%"
+        - "%setting_state_d%"
         - ""
         - "&e¡Click para alternar!"
       slot: 13
     mount:
       material: "SADDLE"
-      displayName: "&bMontura"
       amount: 1
+      displayName: "&bMontura"
       lore:
         - ""
-        - "&f¿Quieres permitir que los demas"
-        - "&fjugadores se monten encima tuyo?"
+        - "&fDo you want to allow others"
+        - "&fplayers mount you?"
         - ""
-        - "%setting_state%"
+        - "%setting_state_m%"
         - ""
         - "&e¡Click para alternar!"
       slot: 14
     fly:
       material: "FEATHER"
-      displayName: "&bVuelo"
       amount: 1
+      displayName: "&bVuelo"
       lore:
         - ""
-        - "&fVuela por los lobbyes."
+        - "&fFly through the lobbies."
         - ""
-        - "%setting_state%"
+        - "%setting_state_f%"
         - ""
         - "&e¡Click para alternar!"
       slot: 15
+
+  secondary-items:
+    close:
+      material: "BOOK"
+      amount: 1
+      displayName: "&cClose menu"
+      lore:
+        - ""
+      slot: 40
+
+    status:
+      enabled:
+        material: "LIME_STAINED_GLASS_PANE"
+        amount: 1
+        displayName: "&a&lENABLED"
+        lore: [ ]
+      disabled:
+        material: "RED_STAINED_GLASS_PANE"
+        amount: 1
+        displayName: "&c&lDISABLED"
+        lore: [ ]
+      only-ranks:
+        material: "PINK_STAINED_GLASS_PANE"
+        amount: 1
+        displayName: "&d&lONLY_RANKS"
+        lore: [ ]

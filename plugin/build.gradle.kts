@@ -11,12 +11,11 @@ dependencies {
     implementation("team.unnamed:gui-menu-adapt-v1_19_R1:3.4.0-20221007.211619-1")
 
     implementation("team.unnamed:gui-item-api:3.4.0-SNAPSHOT")
-    implementation("team.unnamed:gui-item-skull-api:3.4.0-SNAPSHOT")
 }
 
 tasks {
     shadowJar {
-        archiveBaseName.set("mercurysettings")
+        archiveBaseName.set("playersettings")
         archiveClassifier.set("java${project.property("java")}")
     }
 

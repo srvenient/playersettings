@@ -1,9 +1,9 @@
-main: team.emptyte.mercurysettings.plugin.MercurySettings
+main: team.emptyte.playersettings.plugin.PlayerSettingsPlugin
 version: @version@
 author: EmptyteTeam
 api-version: 1.13
-name: mercurysettings
+name: playersettings
 
 commands:
-  mercurysettings:
+  settings:
     description: test
