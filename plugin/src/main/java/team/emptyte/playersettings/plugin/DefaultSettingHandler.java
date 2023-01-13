@@ -96,6 +96,38 @@ public class DefaultSettingHandler implements SettingHandler {
         return false;
     }
 
+    private ItemStack statusItem(User user, String type) {
+        String DEFAULT_PATH = "menu.secondary-items.";
+
+        switch (type) {
+            case "visibility" -> {
+                switch (user.getSettingStatus(type)) {
+                    case 0 -> {
+                        return messageHandler.getItem(DEFAULT_PATH + "status.enabled");
+                    }
+                    case 1 -> {
+                        return messageHandler.getItem(DEFAULT_PATH + "status.disabled");
+                    }
+                    case 2 -> {
+                        return messageHandler.getItem(DEFAULT_PATH + "status.only-ranks");
+                    }
+                }
+            }
+            case "chat", "double-jump", "mount", "fly" -> {
+                switch (user.getSettingStatus(type)) {
+                    case 0 -> {
+                        return messageHandler.getItem(DEFAULT_PATH + "status.enabled");
+                    }
+                    case 1 -> {
+                        return messageHandler.getItem(DEFAULT_PATH + "status.disabled");
+                    }
+                }
+            }
+        }
+
+        return null;
+    }
+
     private ItemClickable stateItem(User user, SettingData data) {
         return ItemClickable.builder(data.getSlot() + 9)
                 .item(statusItem(user, data.getId()))
@@ -118,38 +150,6 @@ public class DefaultSettingHandler implements SettingHandler {
                     return true;
                 })
                 .build();
-    }
-
-    private ItemStack statusItem(User user, String type) {
-        String DEFAULT_PATH = "menu.secondary-items.";
-
-        switch (type) {
-            case "visibility", "chat" -> {
-                switch (user.getSetting(type).getState()) {
-                    case 0 -> {
-                        return messageHandler.getItem(DEFAULT_PATH + "status.enabled");
-                    }
-                    case 1 -> {
-                        return messageHandler.getItem(DEFAULT_PATH + "status.disabled");
-                    }
-                    case 2 -> {
-                        return messageHandler.getItem(DEFAULT_PATH + "status.only-ranks");
-                    }
-                }
-            }
-            case "double-jump", "mount", "fly" -> {
-                switch (user.getSetting(type).getState()) {
-                    case 0 -> {
-                        return messageHandler.getItem(DEFAULT_PATH + "status.enabled");
-                    }
-                    case 1 -> {
-                        return messageHandler.getItem(DEFAULT_PATH + "status.disabled");
-                    }
-                }
-            }
-        }
-
-        return null;
     }
 
 }

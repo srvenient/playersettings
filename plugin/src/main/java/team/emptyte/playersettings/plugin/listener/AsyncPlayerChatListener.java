@@ -30,33 +30,21 @@ public class AsyncPlayerChatListener implements Listener {
             return;
         }
 
-        if (user.getSetting("chat").getState() == 1) {
-            Bukkit.getOnlinePlayers().forEach(players -> {
-                User users = this.users.findSync(players.getUniqueId().toString());
-
-                if (!players.hasPermission("mercurysettings.rank")) {
-                    if (users.getSetting("chat").getState() == 2) {
-                        event.getRecipients().remove(players);
-                    }
-                }
-            });
+        if (user.getSettingStatus("chat") == 1) {
+            event.setCancelled(true);
+            messageHandler.sendMessages(player, "chat-deactivated");
 
             return;
         }
 
-        if (user.getSetting("chat").getState() == 2) {
-            event.setCancelled(true);
-            messageHandler.sendMessages(player, "chat-deactivated");
+        Bukkit.getOnlinePlayers().forEach((players) -> {
+            User users = this.users.findSync(players.getUniqueId().toString());
 
-            Bukkit.getOnlinePlayers().forEach(players -> {
-                User users = this.users.findSync(players.getUniqueId().toString());
+            if (users.getSettingStatus("chat") == 1) {
+                event.getRecipients().remove(players);
+            }
 
-                if (users.getSetting("chat").getState() == 2) {
-                    event.getRecipients().remove(players);
-                }
-            });
-        }
-
+        });
     }
 
 }

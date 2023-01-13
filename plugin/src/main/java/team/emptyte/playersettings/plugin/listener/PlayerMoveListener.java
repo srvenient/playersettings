@@ -28,7 +28,7 @@ public class PlayerMoveListener implements Listener {
             return;
         }
 
-        if (user.getSetting("double-jump").getState() == 0
+        if (user.getSettingStatus("double-jump") == 0
                 && player.getGameMode() != GameMode.CREATIVE
                 && player.getLocation().subtract(0.0D, 1.0D, 0.0D).getBlock().getType() != Material.AIR
                 && !player.isFlying()) {

@@ -7,11 +7,11 @@ config:
     click-item-close: "UI_BUTTON_CLICK"
 
     permissions:
-      visibility: "playersettings.visibility"
-      chat: "playersettings.chat"
-      double-jump: "playersettings.double-jump"
-      mount: "playersettings.mount"
-      fly: "playersettings.fly"
+      visibility: "playersettings.menu.visibility"
+      chat: "playersettings.menu.chat"
+      double-jump: "playersettings.menu.double-jump"
+      mount: "playersettings.menu.mount"
+      fly: "playersettings.menu.fly"
 
 messages:
   no-permission: "&cYou don't have enough permissions."

@@ -28,7 +28,7 @@ public class PlayerToggleFlightListener implements Listener {
             return;
         }
 
-        if (user.getSetting("double-jump").getState() == (byte) 0) {
+        if (user.getSettingStatus("double-jump") == (byte) 0) {
             if (player.getGameMode() == GameMode.CREATIVE || player.getGameMode() == GameMode.SPECTATOR) {
                 return;
             }
