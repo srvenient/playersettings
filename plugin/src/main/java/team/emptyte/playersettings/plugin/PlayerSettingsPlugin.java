@@ -13,10 +13,6 @@ import team.emptyte.playersettings.api.data.SettingData;
 import team.emptyte.playersettings.api.data.SettingDataManager;
 import team.emptyte.playersettings.api.message.MessageHandler;
 import team.emptyte.playersettings.api.sql.connection.SQLClient;
-import team.emptyte.playersettings.api.sql.identity.DataType;
-import team.emptyte.playersettings.api.sql.identity.SQLConstraint;
-import team.emptyte.playersettings.api.sql.mysql.MySQLElement;
-import team.emptyte.playersettings.api.sql.mysql.MySQLTable;
 import team.emptyte.playersettings.api.storage.ModelService;
 import team.emptyte.playersettings.api.storage.dist.LocalModelService;
 import team.emptyte.playersettings.api.user.User;
@@ -64,20 +60,6 @@ public class PlayerSettingsPlugin extends JavaPlugin {
         }
 
         messageHandler = new DefaultMessageHandler(getConfig());
-
-        /*users = new SQLModelService(
-                client,
-                LocalModelService.concurrent(),
-                new MySQLTable(
-                        "users",
-                        new MySQLElement("id", DataType.STRING, SQLConstraint.PRIMARY),
-                        new MySQLElement("visibility", DataType.NUMBER),
-                        new MySQLElement("chat", DataType.NUMBER),
-                        new MySQLElement("doublejump", DataType.NUMBER),
-                        new MySQLElement("mount", DataType.NUMBER),
-                        new MySQLElement("fly", DataType.NUMBER)
-                )
-        );*/
 
         users = new UserRemoteModelService(this, LocalModelService.concurrent(), client);
         ModelService<SettingData> settings = LocalModelService.hashMap();
