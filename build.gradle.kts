@@ -1,4 +1,6 @@
-plugins { java }
+plugins {
+    java
+}
 
 subprojects {
     apply(plugin = "java-library")
@@ -7,17 +9,21 @@ subprojects {
         java {
             toolchain {
                 languageVersion.set(
-                        JavaLanguageVersion.of(17)
+                    JavaLanguageVersion.of(
+                        project.property("java").toString()
+                    )
                 )
             }
         }
     }
 
     repositories {
-        mavenLocal()
-        maven("https://repo.unnamed.team/repository/unnamed-public/")
-        maven("https://repo.codemc.io/repository/nms/")
-        maven("https://libraries.minecraft.net/")
         mavenCentral()
+
+        maven("https://repo.unnamed.team/repository/unnamed-public/")
+        maven("https://repo.papermc.io/repository/maven-public/")
+        maven("https://repo.codemc.io/repository/nms/")
+
+        mavenLocal()
     }
 }

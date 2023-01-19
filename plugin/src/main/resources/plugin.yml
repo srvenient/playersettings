@@ -1,9 +1,0 @@
-main: team.emptyte.playersettings.plugin.PlayerSettingsPlugin
-version: @version@
-author: EmptyteTeam
-api-version: 1.13
-name: playersettings
-
-commands:
-  settings:
-    description: test

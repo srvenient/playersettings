@@ -1,11 +1,15 @@
 package team.emptyte.playersettings.api.storage.dist;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import team.emptyte.playersettings.api.storage.ModelService;
 import team.emptyte.playersettings.api.storage.model.Model;
 
-import javax.annotation.Nullable;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Consumer;
 
@@ -24,8 +28,8 @@ public class LocalModelService<T extends Model>
     }
 
     @Override
-    public List<T> findSync(@NotNull String field, @NotNull String value) {
-        return Collections.singletonList(findSync(value));
+    public T findSync(@NotNull String field, @NotNull String value) {
+        return findSync(value);
     }
 
     @Override
@@ -34,18 +38,18 @@ public class LocalModelService<T extends Model>
     }
 
     @Override
-    public void saveSync(@NotNull T model) {
+    public void saveSync(@NotNull T model, boolean saveInCached) {
         cache.put(model.getId(), model);
+    }
+
+    @Override
+    public void updateSync(T model) {
+
     }
 
     @Override
     public void deleteSync(@NotNull T model) {
         cache.remove(model.getId());
-    }
-
-    @Override
-    public T deleteSync(@NotNull String id) {
-        return cache.remove(id);
     }
 
     public static <T extends Model> LocalModelService<T> hashMap() {
@@ -59,5 +63,4 @@ public class LocalModelService<T extends Model>
     public static <T extends Model> LocalModelService<T> create(Map<String, T> cache) {
         return new LocalModelService<>(cache);
     }
-
 }

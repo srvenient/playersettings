@@ -36,7 +36,8 @@ public class SimpleSettingDataManager implements SettingDataManager {
                                         .setSlot(config.getInt(DEFAULT_PATH + key + ".slot"))
                                         .setPermission(config.getString("config.menu.permissions." + key))
                                         .setSecondItem(config.getBoolean("config.menu.item-state-enabled"))
-                                        .build()
+                                        .build(),
+                                true
                         );
                     }
                 });

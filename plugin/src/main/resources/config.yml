@@ -1,4 +1,12 @@
 config:
+  database:
+    mysql-enabled: true
+    host: "localhost"
+    port: 3306
+    database: "playersettings"
+    username: "root"
+    password: ""
+
   menu:
     item-state-enabled: true
     item-state-click-change: false

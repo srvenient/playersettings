@@ -8,8 +8,8 @@ public enum EventType {
         Player player = user.getPlayer();
         String id = "visibility";
 
-        if (user.getSettingStatus(id) == (byte) 0) {
-            user.updateSettingStatus(id, (byte) 1);
+        if (user.getSettingStatus(id) == 0) {
+            user.updateSettingStatus(id, 1);
 
             Bukkit.getOnlinePlayers().forEach(players -> {
                 if (!players.hasPermission("playersettings.rank")) {
@@ -22,16 +22,16 @@ public enum EventType {
             return;
         }
 
-        if (user.getSettingStatus(id) == (byte) 1) {
-            user.updateSettingStatus(id, (byte) 2);
+        if (user.getSettingStatus(id) == 1) {
+            user.updateSettingStatus(id, 2);
 
             Bukkit.getOnlinePlayers().forEach(players -> player.hidePlayer(plugin, players));
 
             return;
         }
 
-        if (user.getSettingStatus(id) == (byte) 2) {
-            user.updateSettingStatus(id, (byte) 0);
+        if (user.getSettingStatus(id) == 2) {
+            user.updateSettingStatus(id, 0);
 
             Bukkit.getOnlinePlayers().forEach(players -> player.showPlayer(plugin, players));
         }
@@ -39,14 +39,14 @@ public enum EventType {
     CHAT((plugin, user) -> {
         String id = "chat";
 
-        if (user.getSettingStatus(id) == (byte) 0) {
-            user.updateSettingStatus(id, (byte) 1);
+        if (user.getSettingStatus(id) == 0) {
+            user.updateSettingStatus(id, 1);
 
             return;
         }
 
-        if (user.getSettingStatus(id) == (byte) 1) {
-            user.updateSettingStatus(id, (byte) 0);
+        if (user.getSettingStatus(id) == 1) {
+            user.updateSettingStatus(id, 0);
         }
 
     }),
@@ -61,27 +61,27 @@ public enum EventType {
             return;
         }
 
-        if (user.getSettingStatus(id) == (byte) 0) {
-            user.updateSettingStatus(id, (byte) 1);
+        if (user.getSettingStatus(id) == 0) {
+            user.updateSettingStatus(id, 1);
 
             return;
         }
 
-        if (user.getSettingStatus(id) == (byte) 1) {
-            user.updateSettingStatus(id, (byte) 0);
+        if (user.getSettingStatus(id) == 1) {
+            user.updateSettingStatus(id, 0);
         }
     }),
     MOUNT((plugin, user) -> {
         String id = "mount";
 
-        if (user.getSettingStatus(id) == (byte) 0) {
-            user.updateSettingStatus(id, (byte) 1);
+        if (user.getSettingStatus(id) == 0) {
+            user.updateSettingStatus(id, 1);
 
             return;
         }
 
-        if (user.getSettingStatus(id) == (byte) 1) {
-            user.updateSettingStatus(id, (byte) 0);
+        if (user.getSettingStatus(id) == 1) {
+            user.updateSettingStatus(id, 0);
         }
     }),
     FLY((plugin, user) -> {
@@ -96,7 +96,7 @@ public enum EventType {
         }
 
         if (user.getSettingStatus(id) == 0) {
-            user.updateSettingStatus(id, (byte) 1);
+            user.updateSettingStatus(id, 1);
 
             player.setAllowFlight(false);
             player.setFlying(false);
@@ -105,7 +105,7 @@ public enum EventType {
         }
 
         if (user.getSettingStatus(id) == 1) {
-            user.updateSettingStatus(id, (byte) 0);
+            user.updateSettingStatus(id, 0);
 
             player.setAllowFlight(true);
             player.setFlying(true);

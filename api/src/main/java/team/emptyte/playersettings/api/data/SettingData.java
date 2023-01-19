@@ -1,8 +1,9 @@
 package team.emptyte.playersettings.api.data;
 
 import org.bukkit.inventory.ItemStack;
-
 import team.emptyte.playersettings.api.storage.model.Model;
+
+import java.util.Map;
 
 public class SettingData implements Model {
 

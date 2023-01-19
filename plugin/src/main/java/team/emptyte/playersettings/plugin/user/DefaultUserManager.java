@@ -15,34 +15,35 @@ public class DefaultUserManager implements UserManager {
         this.users = users;
     }
 
-
     @Override
     public void load(String id) {
         User user = users.findSync(id);
 
         if (user == null) {
-            user = new User(id);
+            User newUser = new User(id);
+            newRegisterSettings(newUser);
 
-            users.saveSync(user);
-            registerSettings(user);
-
-            return;
+            users.saveSync(newUser, true);
         }
     }
 
     @Override
     public void save(String id) {
+        User user = users.findSync(id);
 
+        if (user != null) {
+            users.updateSync(user);
+        }
     }
 
-    private void registerSettings(User user) {
-        Map<String, Byte> settings = new HashMap<>();
+    private void newRegisterSettings(User user) {
+        Map<String, Integer> settings = new HashMap<>();
 
-        settings.put("visibility", (byte) 0);
-        settings.put("chat", (byte) 0);
-        settings.put("double-jump", (byte) 1);
-        settings.put("mount", (byte) 1);
-        settings.put("fly", (byte) 1);
+        settings.put("visibility", 0);
+        settings.put("chat", 0);
+        settings.put("doublejump", 1);
+        settings.put("mount", 1);
+        settings.put("fly", 1);
 
         user.setSettings(settings);
     }

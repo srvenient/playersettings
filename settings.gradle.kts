@@ -1,4 +1,9 @@
-rootProject.name = "mercuryoptions"
+rootProject.name = "playersettings"
 
-include("api")
-include("plugin")
+includePrefixed("api")
+includePrefixed("plugin")
+
+fun includePrefixed(name: String) {
+    include("playersettings-$name")
+    project(":playersettings-$name").projectDir = file(name)
+}
