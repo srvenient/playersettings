@@ -16,13 +16,12 @@ dependencies {
 
     implementation("team.unnamed:gui-item-api:3.4.0-SNAPSHOT")
 
-    implementation(libs.hikari)
- // Optional plugin hooks
+    // Optional plugin hooks
     //compileOnly("me.clip:placeholderapi:2.10.10")
 }
 
 bukkit {
-    main = "team.emptyte.playersettings.plugin.PlayerSettingsPlugin"
+    main = "com.srvenient.playersettings.PlayerSettingsPlugin"
     name = "playersettings"
     version = project.version.toString()
     apiVersion = "1.13"

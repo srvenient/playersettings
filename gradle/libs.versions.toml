@@ -6,7 +6,6 @@ spigot = "1.19.2-R0.1-SNAPSHOT"
 
 # sql distributions
 hikari = "4.0.3"
-jdbi = "3.27.1"
 
 [libraries]
 annotations = { group = "org.jetbrains", name = "annotations", version.ref = "annotations" }
@@ -16,4 +15,3 @@ spigot = { module = "org.spigotmc:spigot", name = "spigot", version.ref = "spigo
 
 # sql distributions
 hikari = { module = "com.zaxxer:HikariCP", name = "hikari", version.ref = "hikari" }
-jdbi = { module = "org.jdbi:jdbi3-core", name = "jdbi", version.ref = "jdbi" }
