@@ -7,22 +7,9 @@ config:
     username: "root"
     password: ""
 
-  menu:
-    item-state-enabled: true
-    item-state-click-change: false
-
-    click-settings: "UI_BUTTON_CLICK"
-    click-item-close: "UI_BUTTON_CLICK"
-
-    permissions:
-      visibility: "playersettings.menu.visibility"
-      chat: "playersettings.menu.chat"
-      double-jump: "playersettings.menu.double-jump"
-      mount: "playersettings.menu.mount"
-      fly: "playersettings.menu.fly"
-
 messages:
   no-permission: "&cYou don't have enough permissions."
+  world-denied: "This add-on cannot be used in this world."
   only-players: "&cOnly players."
   help:
     - "hi"
@@ -31,11 +18,12 @@ messages:
   chat-deactivated: "&cYou have chat disabled."
 
 menu:
-  title: "Configuration the Lobby"
-  rows: 5
+  title: "&bLobby settings"
+  rows: 6
 
   settings:
     visibility:
+      permission: "playersettings.visibility"
       amount: 1
       material: "CLOCK"
       displayName: "&bVisibilidad"
@@ -46,10 +34,11 @@ menu:
         - ""
         - "%setting_state%"
         - ""
-        - "&e¡Click para alternar!"
-      slot: 11
+        - "&eClick to toggle!"
+      slot: 29
     chat:
-      material: "LEGACY_EMPTY_MAP"
+      permission: "playersettings.chat"
+      material: "MAP"
       amount: 1
       displayName: "&bChat"
       lore:
@@ -57,26 +46,28 @@ menu:
         - "&fModify which players, you are interested in"
         - "&fsee your messages in the chat."
         - ""
-        - "%setting_state%"
+        - "%setting_state_f%"
         - ""
-        - "&e¡Click para alternar!"
-      slot: 12
-    double-jump:
+        - "&eClick to toggle!"
+      slot: 33
+    jump:
+      permission: "playersettings.jump"
       material: "COOKED_MUTTON"
       amount: 1
-      displayName: "&bDoble Salto"
+      displayName: "&bJump"
       lore:
         - ""
         - "&fJump twice."
         - ""
         - "%setting_state_d%"
         - ""
-        - "&e¡Click para alternar!"
-      slot: 13
+        - "&eClick to toggle!"
+      slot: 31
     mount:
+      permission: "playersettings.mount"
       material: "SADDLE"
       amount: 1
-      displayName: "&bMontura"
+      displayName: "&bMount"
       lore:
         - ""
         - "&fDo you want to allow others"
@@ -84,43 +75,18 @@ menu:
         - ""
         - "%setting_state_m%"
         - ""
-        - "&e¡Click para alternar!"
-      slot: 14
+        - "&eClick to toggle!"
+      slot: 32
     fly:
+      permission: "playersettings.fly"
       material: "FEATHER"
       amount: 1
-      displayName: "&bVuelo"
+      displayName: "&bFly"
       lore:
         - ""
         - "&fFly through the lobbies."
         - ""
         - "%setting_state_f%"
         - ""
-        - "&e¡Click para alternar!"
-      slot: 15
-
-  secondary-items:
-    close:
-      material: "BOOK"
-      amount: 1
-      displayName: "&cClose menu"
-      lore:
-        - ""
-      slot: 40
-
-    status:
-      enabled:
-        material: "LIME_STAINED_GLASS_PANE"
-        amount: 1
-        displayName: "&a&lENABLED"
-        lore: [ ]
-      disabled:
-        material: "RED_STAINED_GLASS_PANE"
-        amount: 1
-        displayName: "&c&lDISABLED"
-        lore: [ ]
-      only-ranks:
-        material: "PINK_STAINED_GLASS_PANE"
-        amount: 1
-        displayName: "&d&lONLY_RANKS"
-        lore: [ ]
+        - "&eClick to toggle!"
+      slot: 33
