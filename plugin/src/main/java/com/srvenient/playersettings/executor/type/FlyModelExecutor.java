@@ -15,7 +15,7 @@ public class FlyModelExecutor implements SettingExecutor {
 
     @Override
     public void execute(@NotNull User user) {
-        Player player = user.getPlayer();
+        final Player player = user.getPlayer();
 
         if (user.getSettingState(getId()) == 0) {
             user.updateState(getId(), (byte) 1);

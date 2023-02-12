@@ -7,6 +7,20 @@ config:
     username: "root"
     password: ""
 
+  sound:
+    change-state: "UI_BUTTON_CLICK"
+    close-inventory: "UI_BUTTON_CLICK"
+
+  enabled-status-items: true
+  interact-with-status-item: false
+
+  default-values:
+    visibility: 0
+    chat: 0
+    jump: 1
+    mount: 1
+    fly: 1
+
 messages:
   no-permission: "&cYou don't have enough permissions."
   world-denied: "This add-on cannot be used in this world."
@@ -16,6 +30,8 @@ messages:
     - "hi"
 
   chat-deactivated: "&cYou have chat disabled."
+  cannot-be-mounted: "&cYou do not have the necessary permissions to ride other players."
+  has-mount-disabled: "&cThe player you are trying to ride, does not allow it."
 
 menu:
   title: "&bLobby settings"
@@ -35,7 +51,7 @@ menu:
         - "%setting_state%"
         - ""
         - "&eClick to toggle!"
-      slot: 29
+      slot: 11
     chat:
       permission: "playersettings.chat"
       material: "MAP"
@@ -49,7 +65,7 @@ menu:
         - "%setting_state_f%"
         - ""
         - "&eClick to toggle!"
-      slot: 33
+      slot: 12
     jump:
       permission: "playersettings.jump"
       material: "COOKED_MUTTON"
@@ -62,7 +78,7 @@ menu:
         - "%setting_state_d%"
         - ""
         - "&eClick to toggle!"
-      slot: 31
+      slot: 13
     mount:
       permission: "playersettings.mount"
       material: "SADDLE"
@@ -76,7 +92,7 @@ menu:
         - "%setting_state_m%"
         - ""
         - "&eClick to toggle!"
-      slot: 32
+      slot: 14
     fly:
       permission: "playersettings.fly"
       material: "FEATHER"
@@ -89,4 +105,31 @@ menu:
         - "%setting_state_f%"
         - ""
         - "&eClick to toggle!"
-      slot: 33
+      slot: 15
+
+  common-items:
+    close:
+      material: "BARRIER"
+      amount: 1
+      displayName: "&cClose"
+      lore:
+        - "&7Close inventory."
+      slot: 31
+    enabled:
+      material: "LIME_STAINED_GLASS_PANE"
+      amount: 1
+      displayName: "&a&lENABLED"
+      lore:
+        - ""
+    disabled:
+      material: "RED_STAINED_GLASS_PANE"
+      amount: 1
+      displayName: "&c&lDISABLED"
+      lore:
+        - ""
+    only-ranks:
+      material: "PINK_STAINED_GLASS_PANE"
+      amount: 1
+      displayName: "&d&lONLY_RANKS"
+      lore:
+        - ""

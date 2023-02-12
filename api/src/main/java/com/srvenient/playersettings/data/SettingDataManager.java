@@ -8,6 +8,8 @@ public interface SettingDataManager {
 
     Collection<SettingData> getSettings();
 
-    void uploadSettings(@NotNull String path);
+    void loadData(@NotNull String path);
+
+    void removeData();
 
 }

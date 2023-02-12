@@ -17,15 +17,15 @@ import static com.srvenient.playersettings.utils.ColorUtils.colorize;
 
 public class SettingCommand implements CommandExecutor, TabCompleter {
 
-    private final FileConfiguration config;
     private final UserHandler userHandler;
+    private final FileConfiguration configuration;
 
     public SettingCommand(
-            FileConfiguration config,
+            FileConfiguration configuration,
             UserHandler userHandler
     ) {
-        this.config = config;
         this.userHandler = userHandler;
+        this.configuration = configuration;
     }
 
     @Override
@@ -36,16 +36,27 @@ public class SettingCommand implements CommandExecutor, TabCompleter {
             @NotNull String[] args
     ) {
         if (!(sender instanceof Player player)) {
-            Bukkit.getLogger().info(config.getString("only-players"));
+            Bukkit.getLogger().info(configuration.getString("messages.only-players"));
 
             return true;
         }
 
         if (args.length == 0) {
-            player.sendMessage(colorize(config.getString("messages.help")));
+            if (player.isOp()) {
+                player.sendMessage(colorize("&fEste complemento esta en su version &a2.1.0&f."));
+                player.sendMessage(colorize("                     &7Creado por &cSrVenient"));
+
+                return true;
+            }
+
+            player.sendMessage(colorize(configuration.getString("messages.help")));
         } else {
             if (args[0].equals("menu")) {
-                userHandler.createMenu(player);
+                if (userHandler.isWorldDenied(player.getWorld())) {
+                    return true;
+                }
+
+                player.openInventory(userHandler.createMenu(player));
             }
         }
 

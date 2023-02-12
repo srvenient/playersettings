@@ -16,6 +16,8 @@ dependencies {
 
     implementation("team.unnamed:gui-item-api:3.4.0-SNAPSHOT")
 
+    implementation(libs.hikari)
+
     // Optional plugin hooks
     //compileOnly("me.clip:placeholderapi:2.10.10")
 }

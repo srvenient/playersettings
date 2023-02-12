@@ -11,4 +11,6 @@ public interface UserHandler {
 
     boolean isWorldDenied(@NotNull World world);
 
+    void performActions(@NotNull User user);
+
 }

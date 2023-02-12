@@ -22,13 +22,13 @@ public class VisibilityModelExecutor implements SettingExecutor {
 
     @Override
     public void execute(@NotNull User user) {
-        Player player = user.getPlayer();
+        final Player player = user.getPlayer();
 
         if (user.getSettingState(getId()) == 0) {
             user.updateState(getId(), (byte) 1);
 
             Bukkit.getOnlinePlayers().forEach(players -> {
-                if (!players.hasPermission("playersettings.rank")) {
+                if (!players.hasPermission("playersettings.visibility.rank")) {
                     player.hidePlayer(plugin, players);
                 } else {
                     player.showPlayer(plugin, players);
