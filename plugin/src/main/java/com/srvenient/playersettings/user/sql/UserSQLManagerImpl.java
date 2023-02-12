@@ -35,7 +35,8 @@ public class UserSQLManagerImpl implements UserSQLManager {
     @Override
     public User getPlayer(UUID uuid) {
         try (Connection connection = client.getConnection()) {
-            final PreparedStatement statement = connection.prepareStatement("SELECT * FROM playersettings_data WHERE id=?");
+            final PreparedStatement statement = connection.prepareStatement("SELECT * FROM playersettings_data " +
+                    "WHERE id=?");
             statement.setString(1, uuid.toString());
 
             final ResultSet result = statement.executeQuery();

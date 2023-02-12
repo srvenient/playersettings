@@ -9,7 +9,7 @@ public interface UserManager {
 
     User getUser(@NotNull UUID uuid);
 
-    void updateUser(@NotNull User user);
+    void updateUser(@NotNull UUID uuid);
 
     void removeUser(@NotNull User user);
 

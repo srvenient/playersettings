@@ -48,14 +48,14 @@ public class SettingLayoutManagerImpl implements SettingDataManager {
             settingDataMap.put(
                     settingId, new SettingData(
                             settingId,
-                            Objects.requireNonNull(configuration.getString(path + settingId + ".permission")),
+                            Objects.requireNonNull(configuration.getString(path + "." + settingId + ".permission")),
                             getItem(
-                                    Objects.requireNonNull(configuration.getString(path + settingId + ".material")),
-                                    Objects.requireNonNull(configuration.getString(path + settingId + ".displayName")),
-                                    configuration.getStringList(path + settingId + ".lore"),
-                                    configuration.getInt(path + settingId + ".amount")
+                                    Objects.requireNonNull(configuration.getString(path + "." +  settingId + ".material")),
+                                    Objects.requireNonNull(configuration.getString(path + "." +  settingId + ".displayName")),
+                                    configuration.getStringList(path + "." +  settingId + ".lore"),
+                                    configuration.getInt(path + "." + settingId + ".amount")
                             ),
-                            configuration.getInt(path + settingId + ".slot"),
+                            configuration.getInt(path + "." + settingId + ".slot"),
                             executorManager.validExecutor(settingId)
                     )
             );

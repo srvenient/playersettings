@@ -31,9 +31,8 @@ public class UserManagerImpl implements UserManager {
     }
 
     @Override
-    public void updateUser(@NotNull User user) {
-        final UUID uuid = user.id();
-        final User userInCache = getUser(user.id());
+    public void updateUser(@NotNull UUID uuid) {
+        final User userInCache = getUser(uuid);
 
         if (userInCache == null) {
             if (sqlManager.getPlayer(uuid) != null) {

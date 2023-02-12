@@ -51,6 +51,7 @@ public class PlayerSettingsPlugin extends JavaPlugin {
                     .setDatabase(getConfig().getString("config.database.database"))
                     .setUsername(getConfig().getString("config.database.username"))
                     .setPassword(getConfig().getString("config.database.password"))
+                    .setMaximumPoolSize(10)
                     .build();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -65,7 +66,7 @@ public class PlayerSettingsPlugin extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        settingDataManager.loadData("menu.settings.");
+        settingDataManager.loadData("menu.settings");
 
         List<Listener> listeners = new ArrayList<>();
 

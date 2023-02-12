@@ -28,9 +28,9 @@ public class PlayerJoinListener implements Listener {
         final Player player = event.getPlayer();
         final UUID uuid = player.getUniqueId();
 
-        final User user = userManager.getUser(uuid);
+        this.userManager.updateUser(uuid);
 
-        this.userManager.updateUser(user);
+        final User user = userManager.getUser(uuid);
 
         if (this.userHandler.isWorldDenied(player.getWorld())) {
             return;
