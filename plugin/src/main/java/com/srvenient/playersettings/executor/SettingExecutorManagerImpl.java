@@ -15,11 +15,21 @@ public class SettingExecutorManagerImpl implements SettingExecutorManager{
     @Override
     public SettingExecutor validExecutor(@NotNull String settingId) {
         switch (settingId) {
-            case "visibility" -> new VisibilityModelExecutor(plugin);
-            case "chat" -> new ChatModelExecutor();
-            case "jump" -> new JumpModelExecutor();
-            case "mount" -> new MountModelExecutor();
-            case "fly" -> new FlyModelExecutor();
+            case "visibility" -> {
+                return new VisibilityModelExecutor(plugin);
+            }
+            case "chat" -> {
+                return new ChatModelExecutor();
+            }
+            case "jump" -> {
+                return new JumpModelExecutor();
+            }
+            case "mount" -> {
+                return new MountModelExecutor();
+            }
+            case "fly" -> {
+                return new FlyModelExecutor();
+            }
         }
 
         return null;

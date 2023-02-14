@@ -1,16 +1,27 @@
 package com.srvenient.playersettings.user;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
+import java.util.List;
 
 public interface UserManager {
 
-    User getUser(@NotNull UUID uuid);
+    @Nullable User getSync(@NotNull String id);
 
-    void updateUser(@NotNull UUID uuid);
+    @Nullable User getOrFindSync(@NotNull String id);
 
-    void removeUser(@NotNull User user);
+    @Nullable List<User> getAllSync();
+
+    /**
+     * Uploads the model to the server
+     *
+     * @param model The model to be uploaded.
+     */
+    void uploadSync(@NotNull User model);
+
+    User saveSync(@NotNull User model, boolean saveInDatabase);
+
+    void deleteSync(@NotNull String id);
 
 }

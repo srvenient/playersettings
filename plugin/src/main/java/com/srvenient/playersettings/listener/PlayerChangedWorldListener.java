@@ -26,9 +26,11 @@ public class PlayerChangedWorldListener implements Listener {
     @EventHandler
     public void onPlayerChanged(PlayerChangedWorldEvent event) {
         final Player player = event.getPlayer();
-        final UUID uuid = player.getUniqueId();
+        final User user = this.userManager.getSync(player.getUniqueId().toString());
 
-        final User user = userManager.getUser(uuid);
+        if (user == null) {
+            return;
+        }
 
         this.userHandler.performActions(user);
     }

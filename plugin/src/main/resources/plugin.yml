@@ -1,0 +1,11 @@
+main: com.srvenient.playersettings.PlayerSettingsPlugin
+name: playersettings
+version: 2.1.0
+api-version: 1.13
+description: "Emptyte Team's Player Settings Plugin"
+author: SrVenient
+
+commands:
+  settings:
+    description: "Main command for the player settings plugin"
+    usage: "/<command> menu"

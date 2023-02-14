@@ -92,20 +92,18 @@ public final class ItemUtils {
                         return false;
                     }
 
-                    if (configuration.getBoolean("config.enabled-status-items")) {
-                        Objects.requireNonNull(event.getClickedInventory())
-                                .setItem(data.slot(), getItemclickable(user, configuration, data, userHandler).getItemStack());
-                    }
-
                     data.executor().execute(user);
                     player.playSound(player, Sound.valueOf(configuration.getString("config.sound.change-state")), 1, 1);
+
+                    Objects.requireNonNull(event.getClickedInventory())
+                            .setItem(data.slot(), getItemclickable(user, configuration, data, userHandler).getItemStack());
 
                     return true;
                 })
                 .build();
     }
 
-    private static ItemStack getStatusItem(
+    public static ItemStack getStatusItem(
             @NotNull User user,
             @NotNull FileConfiguration configuration,
             @NotNull String type
@@ -141,7 +139,7 @@ public final class ItemUtils {
                     }
                 }
             }
-            case "chat", "double-jump", "mount", "fly" -> {
+            case "chat", "jump", "mount", "fly" -> {
                 switch (user.getSettingState(type)) {
                     case 0 -> {
                         return getItem(

@@ -33,9 +33,11 @@ public class AsyncPlayerChatListener implements Listener {
     @EventHandler
     public void onChat(AsyncPlayerChatEvent event) {
         final Player player = event.getPlayer();
-        final UUID uuid = player.getUniqueId();
+        final User user = this.userManager.getSync(player.getUniqueId().toString());
 
-        final User user = userManager.getUser(uuid);
+        if (user == null) {
+            return;
+        }
 
         if (userHandler.isWorldDenied(player.getWorld())) {
             return;
@@ -52,7 +54,11 @@ public class AsyncPlayerChatListener implements Listener {
 
         for (Player players :
                 Bukkit.getOnlinePlayers()) {
-            final User users = userManager.getUser(players.getUniqueId());
+            User users = userManager.getSync(players.getUniqueId().toString());
+
+            if (users == null) {
+                return;
+            }
 
             if (users.getSettingState("chat") == 1) {
                 event.getRecipients().remove(players);

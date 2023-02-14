@@ -11,7 +11,6 @@ config:
     change-state: "UI_BUTTON_CLICK"
     close-inventory: "UI_BUTTON_CLICK"
 
-  enabled-status-items: true
   interact-with-status-item: false
 
   default-values:
@@ -48,8 +47,6 @@ menu:
         - "&fModify who you want to see"
         - "&fwhen you meet in the lobby"
         - ""
-        - "%setting_state%"
-        - ""
         - "&eClick to toggle!"
       slot: 11
     chat:
@@ -62,8 +59,6 @@ menu:
         - "&fModify which players, you are interested in"
         - "&fsee your messages in the chat."
         - ""
-        - "%setting_state_f%"
-        - ""
         - "&eClick to toggle!"
       slot: 12
     jump:
@@ -73,9 +68,7 @@ menu:
       displayName: "&bJump"
       lore:
         - ""
-        - "&fJump twice."
-        - ""
-        - "%setting_state_d%"
+        - "&fJump."
         - ""
         - "&eClick to toggle!"
       slot: 13
@@ -89,8 +82,6 @@ menu:
         - "&fDo you want to allow others"
         - "&fplayers mount you?"
         - ""
-        - "%setting_state_m%"
-        - ""
         - "&eClick to toggle!"
       slot: 14
     fly:
@@ -101,8 +92,6 @@ menu:
       lore:
         - ""
         - "&fFly through the lobbies."
-        - ""
-        - "%setting_state_f%"
         - ""
         - "&eClick to toggle!"
       slot: 15

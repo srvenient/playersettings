@@ -1,4 +1,4 @@
-package com.srvenient.playersettings.client;
+package com.srvenient.playersettings.storage.connection;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;

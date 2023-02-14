@@ -44,7 +44,11 @@ public class PlayerInteractAtEntityListener implements Listener {
                 return;
             }
 
-            User user = this.userManager.getUser(player.getUniqueId());
+            final User user = this.userManager.getSync(player.getUniqueId().toString());
+
+            if (user == null) {
+                return;
+            }
 
             if (user.getSettingState("mount") == 0) {
                 if (!player.hasPermission("playersettings.mount.rank")) {

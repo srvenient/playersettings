@@ -1,8 +1,3 @@
-plugins {
-    id("com.github.johnrengelman.shadow") version ("7.0.0")
-    id("net.minecrell.plugin-yml.bukkit") version ("0.5.1")
-}
-
 dependencies {
     api(project(":playersettings-api"))
 
@@ -22,33 +17,7 @@ dependencies {
     //compileOnly("me.clip:placeholderapi:2.10.10")
 }
 
-bukkit {
-    main = "com.srvenient.playersettings.PlayerSettingsPlugin"
-    name = "playersettings"
-    version = project.version.toString()
-    apiVersion = "1.13"
-    description = "Emptyte Team's Player Settings Plugin"
-    author = "SrVenient"
-
-    commands {
-        create("settings") {
-            description = "Main command for the player settings plugin"
-            usage = "/<command> menu"
-        }
-    }
-}
-
 tasks {
-    test {
-        useJUnitPlatform()
-    }
-
-    java {
-        toolchain {
-            languageVersion.set(JavaLanguageVersion.of(17))
-        }
-    }
-
     shadowJar {
         from(project.sourceSets.main.get().output)
 

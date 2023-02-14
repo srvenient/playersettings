@@ -7,6 +7,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerKickEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.UUID;
 
@@ -20,21 +21,24 @@ public class PlayerQuitListener implements Listener {
 
     @EventHandler
     public void onQuit(PlayerQuitEvent event) {
-        final Player player = event.getPlayer();
-        final UUID uuid = player.getUniqueId();
-
-        final User user = userManager.getUser(uuid);
-
-        this.userManager.removeUser(user);
+        saveUser(event.getPlayer().getUniqueId().toString());
     }
 
     @EventHandler
     public void onKick(PlayerKickEvent event) {
-        final Player player = event.getPlayer();
-        final UUID uuid = player.getUniqueId();
-
-        final User user = userManager.getUser(uuid);
-
-        this.userManager.removeUser(user);
+        saveUser(event.getPlayer().getUniqueId().toString());
     }
+
+
+    private void saveUser(@NotNull final String id) {
+        final User user = userManager.getSync(id);
+
+        if (user == null) {
+            return;
+        }
+
+        this.userManager.uploadSync(user);
+        this.userManager.deleteSync(id);
+    }
+
 }

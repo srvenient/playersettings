@@ -21,8 +21,7 @@ import java.util.List;
 import java.util.Objects;
 
 import static com.srvenient.playersettings.utils.ColorUtils.colorize;
-import static com.srvenient.playersettings.utils.ItemUtils.getItem;
-import static com.srvenient.playersettings.utils.ItemUtils.getItemclickable;
+import static com.srvenient.playersettings.utils.ItemUtils.*;
 
 public class UserHandlerImpl implements UserHandler {
 
@@ -44,27 +43,31 @@ public class UserHandlerImpl implements UserHandler {
 
     @Override
     public Inventory createMenu(@NotNull Player player) {
-        final User user = userManager.getUser(player.getUniqueId());
+        final User user = userManager.getSync(player.getUniqueId().toString());
+
+        if (user == null) {
+            return null;
+        }
+
         final MenuInventoryBuilder builder = MenuInventory.newBuilder(
-                colorize(configuration.getString("menu.tile")), configuration.getInt("menu.rows")
-        );
+                        colorize(configuration.getString("menu.title")), configuration.getInt("menu.rows")
+                )
+                .item(
+                        ItemClickable.builder(configuration.getInt("menu.common-items.close.slot"))
+                                .item(getItem(
+                                        Objects.requireNonNull(configuration.getString("menu.common-items.close.material")),
+                                        Objects.requireNonNull(configuration.getString("menu.common-items.close.displayName")),
+                                        configuration.getStringList("menu.common-items.close.lore"),
+                                        configuration.getInt("menu.common-items.close.amount")
+                                ))
+                                .action(event -> {
+                                    player.closeInventory();
+                                    player.playSound(player, Sound.valueOf(configuration.getString("config.sound.close-inventory")), 1, 1);
 
-        builder.item(
-                ItemClickable.builder(configuration.getInt("menu.common-items.close.slot"))
-                        .item(getItem(
-                                Objects.requireNonNull(configuration.getString("menu.common-items.close.material")),
-                                Objects.requireNonNull(configuration.getString("menu.common-items.close.displayName")),
-                                configuration.getStringList("menu.common-items.close.lore"),
-                                configuration.getInt("menu.common-items.close.amount")
-                        ))
-                        .action(event -> {
-                            player.closeInventory();
-                            player.playSound(player, Sound.valueOf(configuration.getString("config.sound.close-inventory")), 1, 1);
-
-                            return true;
-                        })
-                        .build()
-        );
+                                    return true;
+                                })
+                                .build()
+                );
 
         for (SettingData data :
                 settingDataManager.getSettings()) {
@@ -87,13 +90,10 @@ public class UserHandlerImpl implements UserHandler {
                             return false;
                         }
 
-                        if (configuration.getBoolean("config.enabled-status-items")) {
-                            Objects.requireNonNull(event.getClickedInventory())
-                                    .setItem(data.slot(), getItemclickable(user, configuration, data, this).getItemStack());
-                        }
-
                         data.executor().execute(user);
                         player.playSound(player, Sound.valueOf(configuration.getString("config.sound.change-state")), 1, 1);
+
+                        event.getClickedInventory().setItem(data.slot() + 9, getStatusItem(user, configuration, data.id()));
 
                         return true;
                     })
@@ -122,7 +122,7 @@ public class UserHandlerImpl implements UserHandler {
         }
 
         for (String settingId :
-                user.settings().keySet()) {
+                user.getSettings().keySet()) {
             switch (settingId) {
                 case "visibility" -> {
                     if (user.getSettingState("visibility") == 0) {
